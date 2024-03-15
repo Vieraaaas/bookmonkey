@@ -17,6 +17,7 @@ function renderBooks() {
     author.append(document.createTextNode(book.author));
     isbn.append(document.createTextNode(book.isbn));
     button.append(document.createTextNode("Add to Favorites"));
+    button.setAttribute("id", "btn-favorites");
     entry.append(mainInfo);
     mainInfo.append(title, author);
     entry.append(isbn, button);
