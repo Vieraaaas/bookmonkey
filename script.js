@@ -1,12 +1,12 @@
 let books = [];
 const apiUrl = "http://localhost:4730/books/";
 const list = document.querySelector("#books-list");
+const currentPage = window.location.href;
 
 loadBooks();
 
 function renderBooks() {
-  list.innerText = "";
-  for (const book of books) {
+  function loop(book) {
     const entry = document.createElement("li");
     const mainInfo = document.createElement("header");
     const title = document.createElement("h3");
@@ -29,6 +29,17 @@ function renderBooks() {
     mainInfo.append(title, author);
     entry.append(isbn, button);
     list.append(entry);
+  }
+
+  list.innerText = "";
+  for (const book of books) {
+    if (currentPage.endsWith("favorites.html")) {
+      if (book.favorite === true) {
+        loop(book);
+      }
+    } else if (currentPage.endsWith("index.html")) {
+      loop(book);
+    }
   }
 }
 
