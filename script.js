@@ -13,9 +13,13 @@ function renderBooks() {
     const author = document.createElement("p");
     const isbn = document.createElement("p");
     const button = document.createElement("button");
+    const moreInfo = document.createElement("a");
+    const breakPoint = document.createElement("br");
     title.append(document.createTextNode(book.title));
     author.append(document.createTextNode(book.author));
     isbn.append(document.createTextNode(book.isbn));
+    moreInfo.append(document.createTextNode("More Information"));
+    moreInfo.href = "./book.html";
 
     if (book.favorite === false || book.favorite === undefined) {
       button.append(document.createTextNode("Add to Favorites"));
@@ -27,7 +31,7 @@ function renderBooks() {
     button.bookObject = book;
     entry.append(mainInfo);
     mainInfo.append(title, author);
-    entry.append(isbn, button);
+    entry.append(isbn, moreInfo, breakPoint, button);
     list.append(entry);
   }
 
