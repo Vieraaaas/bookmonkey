@@ -19,7 +19,7 @@ function renderBooks() {
     author.append(document.createTextNode(book.author));
     isbn.append(document.createTextNode(book.isbn));
     moreInfo.append(document.createTextNode("More Information"));
-    moreInfo.href = "./book.html";
+    moreInfo.href = "./book.html?id=" + book.id;
 
     if (book.favorite === false || book.favorite === undefined) {
       button.append(document.createTextNode("Add to Favorites"));
