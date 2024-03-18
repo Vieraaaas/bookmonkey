@@ -45,6 +45,7 @@ async function loadBooks() {
   }
 }
 
+//toggle favorites
 list.addEventListener("click", async function (event) {
   const book = event.target.bookObject;
   if (book.favorite === true || book.favorite === undefined) {
@@ -56,7 +57,7 @@ list.addEventListener("click", async function (event) {
   }
 
   try {
-    const response = await fetch(apiUrl + book.id, {
+    await fetch(apiUrl + book.id, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(book),
